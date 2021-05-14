@@ -1,0 +1,65 @@
+table, th, td {
+    border: 1px solid black;
+}
+
+#add{
+    margin-top: 1em;
+    cursor: pointer;
+}
+
+#modal{
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: auto;
+    background-color: grey;
+    background-color: #80808087;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+#form-modal{
+    width: 25%;
+    border: 1px solid black;
+    padding: 2rem;
+    background-color: white;
+}
+
+#form-modal > p{
+    text-align: center;
+    font-size: 2rem;
+}
+
+#form-modal > label > p{
+    display: inline-block;
+    width: 6rem;
+}
+
+#form-modal > input{
+    width: 14rem;
+}
+
+#readYes, #readNo {
+    width: 1rem !important;
+}
+
+#buttons{
+    width: 36%;
+    margin: 0 auto;
+}
+
+#buttons > button:hover{
+    background-color: grey;
+    cursor: pointer;
+}
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform: scale(1)}
+}
