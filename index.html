@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
+</head>
+<body>
+    <main id="main">
+        <table>
+            <th>Book Title</th>
+            <th>Author</th>
+            <th># of Pages</th>
+            <th>Already read?</th>
+            <th>Delete book</th>
+        
+        </table>
+        <button id="add">Add new book</button>
+
+        <div id="modal" class="modal">
+            <form onsubmit="return false;" id="form-modal">
+                <p>Add a book</p><br>
+                <label for="title"><p>Book Title:</p></label>
+                <input type="text" name="title" id="title"><br>
+                <label for="author"><p>Author:</p></label>
+                <input type="text" name="author" id="author"><br>
+                <label for="pages"><p># of Pages:</p></label>
+                <input type="number" name="pages" id="pages"><br>
+                <label for="read"><p>Already Read:</p></label>
+                <input type="radio" name="read" id="readYes" value="Yes">
+                <span>Yes</span>
+                <input type="radio" name="read" id="readNo" value="No" checked>
+                <span>No</span><br>
+                <div id="buttons">
+                    <button id="submit">Submit</button>
+                    <button id="cancel">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
