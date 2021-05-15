@@ -16,3 +16,6 @@ Using this data-attribute, I know which book the user wants to delete.
 I used the splice function to remove this element from the array then clear and display again.
 I also added a toggle for the already read cell.
 If the user click it, it will change from yes to no and vice versa.
+
+Commit ID: ae7270541c5a9377862a550f22ae04688d01ae9e
+Added localStorage feature.
