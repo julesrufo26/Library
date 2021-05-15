@@ -13,6 +13,10 @@ function Book(title, author, numberOfPages, hasRead){
 
 function addBookToLibrary(book){
     myLibrary.push(book);
+
+    //clear local Storage then save new contents of the array
+    localStorage.clear();
+    localStorage.setItem('libraryArray', JSON.stringify(myLibrary));
 }   
 
 function closeForm(){
@@ -83,6 +87,7 @@ function displayData(){
 function clearData(){
     const trs = document.querySelectorAll('tr');
 
+    //remove all rows except headers
     trs.forEach(tr => {
         if(tr.rowIndex != 0){
             tr.parentNode.removeChild(tr);
@@ -99,6 +104,11 @@ function addDelListener(element){
 
 function deleteElement(index){
     myLibrary.splice(index, 1);
+
+    //update array in the localStorage
+    localStorageUpdate();
+
+    //update display
     clearData();
     displayData();
 }
@@ -120,8 +130,18 @@ function toggleRead(index){
         myLibrary[index].hasRead = 'Yes';
     }
 
+    //update array in the localStorage
+    localStorageUpdate();
+
+    //update display
     clearData();
     displayData();
+}
+
+function localStorageUpdate(){
+    localStorage.clear();
+    localStorage.setItem('libraryArray', JSON.stringify(myLibrary));
+    myLibrary = JSON.parse(localStorage.getItem('libraryArray'));
 }
 
 window.addEventListener('load', () => {
@@ -134,6 +154,13 @@ window.addEventListener('load', () => {
     const pages = document.getElementById('pages');
     const read = document.getElementsByName('read');
 
+    //Check if localStorage is not empty
+    if(localStorage.length != 0){
+        //if true, load the array to myLibrary array
+        myLibrary = JSON.parse(localStorage.getItem('libraryArray'));
+        displayData();
+    }
+
     addNewBook.addEventListener('click', () =>{
         modal.style.display = 'flex';
     });
@@ -145,7 +172,7 @@ window.addEventListener('load', () => {
     submit.addEventListener('click', () => {
         let hasRead = "";
         //simple form validation to check if all fields have been filled up
-        if(title.value == "" || author.value == "" || numberOfPages == ""){
+        if(title.value == "" || author.value == "" || pages.value == ""){
             alert("All fields must be filled up.");
             return;
         }
